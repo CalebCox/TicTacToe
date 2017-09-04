@@ -7,22 +7,29 @@
 </head>
 <body>
     <h1>Tic Tac Toe!</h1>
-    <div class="container">
+    <div class="operations">
+        <p>Choose X's or O's</p>
+        <button class="X">X</button>
+        <button class="O">O</button>
+    </div>
+    <div class="container hide">
         <div class="top">
-            <div class="one"></div>
-            <div class="two"></div>
-            <div class="three"></div>
+            <div class="box" data-i="0" data-j="0"></div>
+            <div class="box" data-i="0" data-j="1"></div>
+            <div class="box" data-i="0" data-j="2"></div>
         </div>
         <div class="middle">
-            <div class="four"></div>
-            <div class="five"></div>
-            <div class="six"></div>
+            <div class="box" data-i="1" data-j="0"></div>
+            <div class="box" data-i="1" data-j="1"></div>
+            <div class="box" data-i="1" data-j="2"></div>
         </div>
         <div class="bottom">
-            <div class="seven"></div>
-            <div class="eight"></div>
-            <div class="nine"></div>
+            <div class="box" data-i="2" data-j="0"></div>
+            <div class="box" data-i="2" data-j="1"></div>
+            <div class="box" data-i="2" data-j="2"></div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

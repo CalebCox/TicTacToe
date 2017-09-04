@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+}
+
+.operations {
+    margin: 0 auto;
+    width: 25%;
+    text-align: center;
+}
+
+button {
+    width: 50px;
+    height: 25px;
+    border: none;
+    font-size: 1em;
+}
+
+.container {
+    margin: 0 auto;
+    width: 314px;
+    height: 310px;
+    background: black;
+}
+
+.top {
+    margin-bottom: 4px;
+}
+
+.bottom {
+    margin-top: 4px;
+}
+
+.box {
+    background: white;
+    border: 1px solid white;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    vertical-align: top;
+    text-align: center;
+    font-size: 5em;
+    font-family: Arial, sans-serif;
+}
+
+.box > p {
+    margin: 0;
+}
+
+.hide {
+    display: none;
+}
