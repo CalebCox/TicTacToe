@@ -7,9 +7,9 @@
 // when space is clicked, check if available. If it is available
 // Check if surrounding spaces are matched or not. If it is not available, do nothing.
 var board = [
-    ['','',''],
-    ['','',''],
-    ['','','']
+    [' ',' ',' '],
+    [' ',' ',' '],
+    [' ',' ',' ']
 ];
 
 var player,
@@ -30,106 +30,49 @@ $('.O').click(function() {
     $('.container').removeClass('hide');
 });
 
-// RE-WORK ALL OF THE BELOW INTO DRY CODE
-
-$('.zero').click(function() {
-    if(checkSpace(board[0][0])){
-        board[0][0] = player;
-        $('.zero').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-$('.one').click(function() {
-    if(checkSpace(board[0][1])){
-        board[0][1] = player;
-        $('.one').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-$('.two').click(function() {
-    if(checkSpace(board[0][2])){
-        board[0][2] = player;
-        $('.two').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-$('.three').click(function() {
-    if(checkSpace(board[1][0])){
-        board[1][0] = player;
-        $('.three').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-
-$('.four').click(function() {
-    if(checkSpace(board[1][1])){
-        board[1][1] = player;
-        $('.four').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-
-$('.five').click(function() {
-    if(checkSpace(board[1][2])){
-        board[1][2] = player;
-        $('.five').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-
-$('.six').click(function() {
-    if(checkSpace(board[2][0])){
-        board[2][0] = player;
-        $('.six').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-$('.seven').click(function() {
-    if(checkSpace(board[2][1])){
-        board[2][1] = player;
-        $('.seven').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
-$('.eight').click(function() {
-    if(checkSpace(board[2][2])){
-        board[2][2] = player;
-        $('.eight').html("<p>" + player + "</p>");
-    } else {
-        alert('Space is not free, choose another');
-    }
-});
-
 $('.box').click(function() {
-   winCheck();
+    $this = $(this);
+    $this.html(player);
+    const i = $this.data('i');
+    const j = $this.data('j');
+    board[i][j] = player;
+    console.log(board);
+
+    if (checkGameOver()) {
+        console.log('Game Over!');
+    }
 });
 
-function winCheck() {
-    if (board[0][0] === "X" && board[0][1] === "X" && board[0][2] === "X") {
-        console.log(player + ' WINS!');
-    } else {
-        console.log('fails');
+function checkGameOver() {
+    // check horizontal
+    for (var i = 0; i < 3; i++) {
+        if (board[i][0] !== ' ' && board[i][0] === board[i][1] && board[i][0] === board[i][2]) {
+            return board[i][0] + " wins";
+        }
     }
+
+    // check vertical
+    for (var j = 0; j < 3; j++) {
+        if (board[0][j] !== ' ' && board[0][j] === board[1][j] && board[0][j] === board[2][j]) {
+            return board[0][j] + " wins";
+        }
+    }
+
+    // check bottom left to top right
+    if (board[0][0] !== ' ' && board[0][0] === board[1][1] && board[0][0] === board[2][2]) {
+        return board[0][0] + " wins";
+    }
+
+    // check bottom right to top left
+    if (board[2][0] !== ' ' && board[2][0] === board[1][1] && board[2][0] === board[0][2]) {
+        return board[2][0] + " wins";
+    }
+
+    return null;
 }
 
 function checkSpace(space) {
- if(space !== '') {
+ if(space !== ' ') {
      console.log('Space isn\'t free please pick another!');
      return false;
  } else {
